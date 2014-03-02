@@ -18,9 +18,6 @@
 <%block name="post">
     ${parent.post()}
     
-    <script src="/js/vendor/jquery.timeago.js" charset="utf-8"></script>
-    <script src="/js/vendor/bootbox.js" charset="utf-8"></script>
-    
     <script type="text/javascript" charset="utf-8">
         $(function()
         {
@@ -74,7 +71,11 @@
                                         '<span class="ellipsis">' + data.code + '</span>' +
                                     '</td>' +
                                     '<td class="characters hidden-tablet hidden-phone">' +
-                                        '<img src="" style="vertical-align: middle; margin-right: 5px; border-radius: 3px; width: 24px; height: 24px;" title="">Refresh to view' +
+                                        data.characters.map( function(element) {
+                                            return( '<img src="http://image.eveonline.com/Character/' + element.identifier + '_32.jpg" ' +
+                                                'style="vertical-align: middle; margin-right: 5px; border-radius: 3px; width: 24px; ' +
+                                                'height: 24px;" title="' + element.name + '">' );
+                                        }).join( '\n' ) +
                                     '</td>' +
                                     '<td class="key-date  hidden-phone">' +
                                         '<time datetime="'+new Date().toISOString()+'">just now</time>' +
